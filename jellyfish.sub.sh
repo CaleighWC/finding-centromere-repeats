@@ -72,7 +72,7 @@ jellyfish count \
 --canonical true \
 --lower-count 10 \
 --timing \
-${fasta_name}
+../${fasta_name}
 
 # Move output back to output directory in projects directory
 
