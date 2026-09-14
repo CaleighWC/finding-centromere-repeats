@@ -5,7 +5,8 @@
 
 # Output: Same BLAST+ result table but without self-matches and 
 # matches covering 50% or less of the query. This is the filtering
-# used in Melters et al. (2013) "global" mode.
+# used in Melters et al. (2013) "global" mode. Also removes
+# duplicates of entire lines.
 
-awk '$1 != $2 && $6 > 50' "$1"
+awk '$1 != $2 && $6 > 50' | uniq "$1"
 
