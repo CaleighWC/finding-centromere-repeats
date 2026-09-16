@@ -1,10 +1,12 @@
 trmass_file="$1"
 matches_file="$2"
+topN="$3"
 
 # Make a temporary file to remove monomers from as their cluster is defined
 cp ${trmass_file} tmp_for_clustering.txt
 
-while [ -s tmp_for_clustering.txt ]
+count=0
+while [ -s tmp_for_clustering.txt ] && [ "${count}" -lt 100 ]
 do
 
 # Read the first value (biggest mass monomer ID) in the clustering file
@@ -21,8 +23,9 @@ awk -v target="${monomer_id}" '$1 == target { $1=$1; print }' OFS='\n' "${matche
 grep -F -v -w -f tmp_1line_matches.txt tmp_for_clustering.txt > tmp_for_clustering_new.txt
 mv tmp_for_clustering_new.txt tmp_for_clustering.txt
 
+count=$((count + 1))
+
 done
 
 rm tmp_for_clustering.txt
-rm tmp_exclude_list.txt
 rm tmp_1line_matches.txt
