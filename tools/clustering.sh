@@ -1,9 +1,9 @@
+# Stop on errors instead of continuing
+set -euo pipefail
+
 trmass_file="$1"
 matches_file="$2"
 topN="$3"
-
-# Stop on errors instead of continuing
-set -euo pipefail
 
 # Make a temporary file to remove monomers from as their cluster is defined
 cp ${trmass_file} tmp_for_clustering.txt
