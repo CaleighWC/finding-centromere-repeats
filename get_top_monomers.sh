@@ -62,13 +62,14 @@ printf "\nCreating sorted file with tandem repeat masses of each monomer\n"
 
 tandem_repeat_masses="tandem_repeat_masses_${scope}.txt"
 
-${script_dir}/tools/calc_tandem_repeat_mass.sh ${len_times_count} \
+${script_dir}/tools/calc_tandem_repeat_mass.sh \
+${len_times_count} ${filtered_blast} \
 | sort -k2,2nr \
 > ${tandem_repeat_masses}
 
 # Collapse the list of monomers and masses into a list of the top clusters and
 # their masses.
-printf "\nClustering and keeping representative sequence for each cluster with cumulative mass\n"
+printf "\nClustering and keeping representative sequence for each cluster\n"
 
 top_clusters="top_clusters_${scope}.txt"
 
