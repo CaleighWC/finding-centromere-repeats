@@ -9,7 +9,7 @@ scope="$3"
 
 # Filter blast output
 
-filtered_blast_name="blast_filtered_${scope}.txt"
+filtered_blast="blast_filtered_${scope}.txt"
 
 if [[ ${scope} == "global" ]]; then
 	tools/blast_filtering_global.sh "${blast_output}" \
@@ -55,7 +55,7 @@ tools/calc_tandem_repeat_mass.sh ${len_times_count} \
 # Collapse the list of monomers and masses into a list of the top clusters and
 # their masses.
 
-top_clusters="top_clusers_${scope}.txt"
+top_clusters="top_clusters_${scope}.txt"
 
 tools/clustering.sh ${tandem_repeat_masses} ${match_list} 100 \
 > ${top_clusters}
