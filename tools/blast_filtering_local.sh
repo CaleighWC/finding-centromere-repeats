@@ -7,5 +7,9 @@
 # This is the filtering used in Melters et al. (2013) "local" mode. 
 # Also removes duplicates of entire lines.
 
-awk '$1 != $2' | uniq "$1"
+# Stop on errors instead of continuing
+set -euo pipefail
+
+# Filter blast
+awk '$1 != $2' "1" | uniq
 

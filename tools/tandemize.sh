@@ -7,5 +7,9 @@
 #parts of the sequence that might wrap around the edge of this monomer. This
 #is described in Melters et al. 2013.
 
+# Stop on errors instead of continuing
+set -euo pipefail
+
+# Use awk to tandemize sequences
 awk '/^@/ {current_header=$1} !/^@/ {print ">" current_header "_" ++count[current_header] "\n" $14 $14}' "$1"
 

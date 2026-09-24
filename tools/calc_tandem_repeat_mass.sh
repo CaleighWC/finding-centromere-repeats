@@ -8,6 +8,10 @@
 # value for this monomer itself. (It is assumed the input file has been
 # cleared of self-matches already.) 
 
+# Stop on errors instead of continuing
+set -euo pipefail
+
+# Calculate tandem mass
 awk '
 	NR == FNR \
 		{ amt[$1] = $2; next }

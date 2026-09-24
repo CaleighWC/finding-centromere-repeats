@@ -8,5 +8,9 @@
 # used in Melters et al. (2013) "global" mode. Also removes
 # duplicates of entire lines.
 
-awk '$1 != $2 && $6 > 50' | uniq "$1"
+# Stop on errors instead of continuing
+set -euo pipefail
+
+# Filter blast
+awk '$1 != $2 && $6 > 50' "$1" | uniq
 
